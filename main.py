@@ -1,10 +1,10 @@
 from login_e_autenticacao import login, cadastrar_usuario
-from operations import ver_saldo, depositar, sacar
+from operations import ver_saldo, depositar, sacar, ver_extrato, transferir
 
 def menu_usuario(usuario_logado):
     print(f"Bem-vindo, {usuario_logado['usuario']}!")
     while True:
-        opcao_usuario = input("Escolha o que deseja fazer: 1.Ver sado 2.Depositar 3.Sacar 4.Sair: ")
+        opcao_usuario = input("Escolha o que deseja fazer: 1.Ver sado 2.Depositar 3.Sacar 4.Ver extrato 5.Transferir 6.Sair: ")
         if opcao_usuario == "1":
             ver_saldo(usuario_logado)
             continue
@@ -18,6 +18,14 @@ def menu_usuario(usuario_logado):
             continue
 
         elif opcao_usuario == "4":
+            ver_extrato(usuario_logado)
+            continue
+
+        elif opcao_usuario == "5":
+            transferir(usuario_logado)
+            continue
+
+        elif opcao_usuario == "6":
             print("Obrigado por usar nosso sistema!")
             break
 

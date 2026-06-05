@@ -9,6 +9,9 @@ Projeto desenvolvido para praticar Python.
 - Consulta de saldo
 - Depósito
 - Saque
+- Transferências
+- Extrato
+- Persistência em Json
 
 ## Tecnologias
 
@@ -16,8 +19,5 @@ Projeto desenvolvido para praticar Python.
 
 ## Próximas funcionalidades
 
-- Extrato
-- Persistência em JSON
-- Transferência entre usuários
 - SQLite
 - Interface gráfica

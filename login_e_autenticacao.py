@@ -1,4 +1,6 @@
-from banco import dados
+import json
+with open('dados.json', 'r', encoding='utf-8') as arquivo:
+    dados = json.load(arquivo)
 
 def login():
     usuario = input("Digite seu nome de usuário: ")
@@ -27,15 +29,29 @@ def cadastrar_usuario():
         usuario = usuario.strip()
         senha = input("Digite uma senha: ")
         senha = senha.strip()
+        if not usuario or not senha:
+            print("Usuário e senha não podem ser vazios. Por favor, tente novamente.")
+            continue
+        usuario_existe = False
         for usuario_cadastrado in dados:
             if usuario_cadastrado['usuario'] == usuario:
                 print("Usuário já existe. Por favor, escolha outro nome de usuário.")
-                continue
-        usuario_cadastrado = {
-            'usuario': usuario,
-            'senha': senha,
-            'saldo': 0.0
-        }
-        dados.append(usuario_cadastrado)
-        print("Usuário cadastrado com sucesso!")
-        return
+                usuario_existe = True
+                break
+
+        if usuario_existe:
+            continue
+        
+        else:
+            usuario_cadastrado = {
+                'usuario': usuario,
+                'senha': senha,
+                'saldo': 0.0,
+                'extrato': []
+            }
+            dados.append(usuario_cadastrado)
+            print("Usuário cadastrado com sucesso!")
+            with open('dados.json', 'w', encoding='utf-8') as arquivo:
+                json.dump(dados, arquivo, ensure_ascii=False, indent=4)
+            print("Usuário cadastrado com sucesso!")
+            return
