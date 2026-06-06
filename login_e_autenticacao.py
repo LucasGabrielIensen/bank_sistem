@@ -10,7 +10,6 @@ def login():
     resultado = autenticar(usuario, senha)
 
     if resultado:
-        print (f"Bem vindo, {resultado['usuario']}!")
         return resultado
     
     else:
@@ -25,8 +24,11 @@ def autenticar(usuario, senha):
     
 def cadastrar_usuario():
     while True:
-        usuario = input("Digite um nome de usuário: ")
+        usuario = input("Digite um nome de usuário ou 'sair' para cancelar: ")
         usuario = usuario.strip()
+        if usuario.lower() == 'sair':
+            print("Cadastro cancelado.")
+            return
         senha = input("Digite uma senha: ")
         senha = senha.strip()
         if not usuario or not senha:
@@ -47,11 +49,12 @@ def cadastrar_usuario():
                 'usuario': usuario,
                 'senha': senha,
                 'saldo': 0.0,
-                'extrato': []
+                'extrato': [],
+                'tipo': 'cliente'
             }
             dados.append(usuario_cadastrado)
             print("Usuário cadastrado com sucesso!")
             with open('dados.json', 'w', encoding='utf-8') as arquivo:
                 json.dump(dados, arquivo, ensure_ascii=False, indent=4)
-            print("Usuário cadastrado com sucesso!")
             return
+        

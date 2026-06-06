@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "usuario": "Lucas",
+        "senha": "B1@nco02",
+        "saldo": 0.0,
+        "extrato": [],
+        "tipo": "admin"
+    },
+    {
+        "usuario": "João Pedro",
+        "senha": "12345",
+        "saldo": 0.0,
+        "extrato": [],
+        "tipo": "cliente"
+    }
+]
